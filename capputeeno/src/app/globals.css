@@ -1,6 +1,13 @@
 :root {
   --border-radius: 12px;
+  --logo-color: #5d5d5d;
+  --bg-secondary: #F3F5F6;
+  --text-dark: #737380;
+  --color-red: #DE3838;
+  --orange-low: #FFA585;
+  --shapes: #DCE2E6;
 }
+
 
 * {
   box-sizing: border-box;
