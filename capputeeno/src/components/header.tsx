@@ -14,9 +14,10 @@ const sairaStencil = Saira_Stencil_One({
 
 const TagHeader = styled.header`
   display: flex;
+  flex-direction: column;
   align-items: center;
   justify-content: space-between;
-  padding: 20px 160px;
+  padding: 12px 24px;
 
   > div {
     display: flex;
@@ -24,13 +25,33 @@ const TagHeader = styled.header`
     justify-content: center;
     gap: 24px;
   }
+
+  @media (min-width: ${(props) => props.theme.tabletBreakpoint}) {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+    padding: 16px 90px;
+  }
+
+  @media (min-width: ${(props) => props.theme.desktopBreakpoint}) {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+    padding: 20px 160px;
+  }
 `
 
 const Logo = styled.a`
   color: var(--logo-color);
   font-weight: 400;
-  font-size: 40px;
+  font-size: 24px;
   line-height: 150%;
+
+  @media (min-width: ${(props) => props.theme.desktopBreakpoint}) {
+    font-size: 40px;
+  }
 `
 export function Header() {
   const { search, setSearch } = useFilter()
@@ -41,7 +62,7 @@ export function Header() {
         <PrimaryInputWithSearchIcon
           value={search}
           handleChange={setSearch}
-          placeholder="Procurando por algo específico"
+          placeholder="Procurando por algo específico?"
         />
         <CartControl />
       </div>
