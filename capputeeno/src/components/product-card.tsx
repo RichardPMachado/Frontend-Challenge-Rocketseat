@@ -1,10 +1,12 @@
 import { styled } from 'styled-components'
 import { formattedInReais } from '../../utils/formatted-in-reais'
+import { useRouter } from 'next/navigation'
 
 interface ProductCardProps {
   image: string
   title: string
   price: number
+  id: string
 }
 
 const Card = styled.div`
@@ -12,6 +14,7 @@ const Card = styled.div`
   align-items: center;
   justify-content: center;
   flex-direction: column;
+  cursor: pointer;
 
   background: rgba(255, 255, 255, 0.4);
   backdrop-filter: blur(10px);
@@ -54,14 +57,20 @@ const Card = styled.div`
   }
 `
 export function ProductCard(props: ProductCardProps) {
+  const router = useRouter()
+  const price = formattedInReais(props.price)
+
+  const handleNavigate = () => {
+    router.push(`/product?id=${props.id}`)
+  }
   // const formattedInReais = (props.price * 0.01).toFixed(2)
   return (
-    <Card>
+    <Card onClick={handleNavigate}>
       <img src={props.image} />
       <div>
         <h3>{props.title}</h3>
         <div></div>
-        <p>{formattedInReais(props.price)}</p>
+        <p>{price}</p>
       </div>
     </Card>
   )

@@ -15,7 +15,6 @@ const ListContainer = styled.div`
 `
 export function ProductsList() {
   const { data } = useProducts()
-  console.log(data, 'now')
 
   return (
     <ListContainer>
@@ -25,6 +24,7 @@ export function ProductsList() {
           image={product.image_url}
           price={product.price_in_cents}
           key={product.id}
+          id={product.id}
         />
       ))}
     </ListContainer>
