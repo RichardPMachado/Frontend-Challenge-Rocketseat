@@ -12,12 +12,15 @@ const fetcher = (query: string): AxiosPromise<ProductsFetchResponse> => {
   return axios.post(API_URL, { query })
 }
 export function useProducts() {
+  const OneSecond = 1000
+  const OneMinute = OneSecond * 60
   const { type, priority, search } = useFilter()
   const searchDeferred = useDeferredValue(search)
   const query = mountQuery(type, priority)
   const { data } = useQuery({
     queryFn: () => fetcher(query),
     queryKey: ['products', type, priority],
+    staleTime: OneMinute,
   })
   const products = data?.data?.data?.allProducts
   const filteredProducts = products?.filter((product) =>
