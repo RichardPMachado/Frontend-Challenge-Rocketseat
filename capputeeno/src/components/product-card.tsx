@@ -1,4 +1,5 @@
 import { styled } from 'styled-components'
+import { formattedInReais } from '../../utils/formatted-in-reais'
 
 interface ProductCardProps {
   image: string
@@ -53,14 +54,14 @@ const Card = styled.div`
   }
 `
 export function ProductCard(props: ProductCardProps) {
-  const formattedInReais = (props.price * 0.01).toFixed(2)
+  // const formattedInReais = (props.price * 0.01).toFixed(2)
   return (
     <Card>
       <img src={props.image} />
       <div>
         <h3>{props.title}</h3>
         <div></div>
-        <p>R$ {formattedInReais}</p>
+        <p>{formattedInReais(props.price)}</p>
       </div>
     </Card>
   )
