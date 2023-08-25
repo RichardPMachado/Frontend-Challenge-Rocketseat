@@ -1,6 +1,7 @@
 import { styled } from 'styled-components'
 import { formattedInReais } from '../../utils/formatted-in-reais'
 import { useRouter } from 'next/navigation'
+import { Divider } from './divider'
 
 interface ProductCardProps {
   image: string
@@ -46,14 +47,6 @@ const Card = styled.div`
     justify-content: center;
     flex-direction: column;
     padding: 8px;
-
-    > div {
-      width: 228px;
-      height: 1px;
-      margin: 8px 0px;
-      padding: 0px;
-      background-color: var(--shapes);
-    }
   }
 `
 export function ProductCard(props: ProductCardProps) {
@@ -63,13 +56,12 @@ export function ProductCard(props: ProductCardProps) {
   const handleNavigate = () => {
     router.push(`/product?id=${props.id}`)
   }
-  // const formattedInReais = (props.price * 0.01).toFixed(2)
   return (
     <Card onClick={handleNavigate}>
       <img src={props.image} />
       <div>
         <h3>{props.title}</h3>
-        <div></div>
+        <Divider />
         <p>{price}</p>
       </div>
     </Card>
